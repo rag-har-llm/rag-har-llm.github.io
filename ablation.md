@@ -38,7 +38,7 @@ This dataset contains 12 activities collected from 14 subjects using acceleromet
 <br>
 ### Temporal Partitioning Analysis
 
-We investigated the effect of different temporal partitioning strategies used during hybrid search. The motivation for this analysis is that activity patterns may not be uniformly distributed across the temporal dimension of a signal window. Transitions often occur at the beginning or end of a segment, while steady-state motion is captured in the middle portion. By explicitly modeling different temporal partitions, we aim to assess whether combining localized representations yields better retrieval performance compared to a single global embedding.
+We investigated the effect of different temporal partitioning strategies used during hybrid search. The motivation for this analysis is that activity patterns may not be uniformly distributed across the temporal dimension of a signal window. Transitions often occur at the beginning or end of a segment, while steady-state motion is captured in the middle portion. By explicitly modeling different temporal partitions, we aim to assess whether combining localized representations yields better retrieval performance compared to a single global embedding. This analysis was conducted on the MHEALTH dataset.
 
 We considered the following partitioning configurations:
 
@@ -64,7 +64,7 @@ The results are summarized in **Table 1**. The whole-window representation alone
 
 ### Hyperparameter Sensitivity Analysis
 
-To better understand the impact of different configurations, we conducted a systematic hyperparameter sensitivity analysis. The goal was to isolate the contribution of each parameter while controlling for confounding effects. Following are the models and hyper-parameters used as our **default configuration** throughout the experiments:
+To better understand the impact of different configurations, we conducted a systematic hyperparameter sensitivity analysis on the MHEALTH dataset. The goal was to isolate the contribution of each parameter while controlling for confounding effects. Following are the models and hyper-parameters used as our **default configuration** throughout the experiments:
 
 - Classifier model: `gpt-5-mini`
 - Embedding model: `text-embedding-3-small`
@@ -106,28 +106,32 @@ Next, we compared different embedding models for vectorization. The results are 
 
 #### Retrieved-Context Exemplars
 
-We then varied the number of retrieved-context exemplars provided in the prompt. The results are presented in **Table 4**. The best results were obtained with 10 examples. Increasing the number beyond 10 led to a slight decrease in accuracy, suggesting that adding more context does not necessarily improve performance and may even dilute the most relevant signals. This indicates that relatively small exemplar settings are sufficient for strong performance.
+We then varied the number of retrieved-context exemplars provided in the prompt. The results are presented in **Table 4**. We found that performance increases from 5 to 10 exemplars, with 10 examples achieving the best results. However, increasing the number beyond 10 led to a slight decrease in accuracy, suggesting that adding more context does not necessarily improve performance and may even dilute the most relevant signals. This indicates that relatively small exemplar settings are sufficient for strong performance.
 
 ##### Table 4. Impact of number of retrieved-context exemplars on classification performance
 
 | Number of Exemplars | Accuracy | F1-Score |
 | ------------------- | -------- | -------- |
+| 5                   | 90.8     | 91.0     |
 | 10                  | 95.0     | 95.0     |
-| 15                  | 93.0     | 92.4     |
-| 20                  | 93.0     | 92.5     |
-| 25                  | 92.0     | 90.3     |
+| 15                  | 94.0     | 92.4     |
+| 20                  | 95.0     | 94.45    |
+| 25                  | 92.0     | 90.33    |
 
 ---
 
 #### Classifier Model
 
-Finally, we evaluated the impact of different large language models while keeping embeddings and search configurations fixed. The results are presented in **Table 5**. The `gpt-5-mini`, a lightweight but reasoning-oriented model, achieved higher accuracy and F1-score than the more general-purpose `gpt-4o`, suggesting that reasoning-oriented models can be more effective for structured classification settings.
+Finally, we evaluated the impact of different large language models while keeping embeddings and search configurations fixed. The results are presented in **Table 5**. Among all models, `gpt-5-mini` achieved the best performance (95.0% accuracy, 95.1% F1), confirming the advantage of reasoning-oriented models in structured classification tasks. The open-source `gpt-oss` also delivered competitive results (92.7% accuracy, 92.3% F1), outperforming larger instruction-tuned models such as `gemma-27b-it` and `llama3.3`. In contrast, the general-purpose `gpt-4o` lagged behind (88.0% accuracy, 87.6% F1), suggesting that general reasoning strength does not directly translate to higher accuracy in retrieval-augmented classification.
 
 ##### Table 5. Impact of different LLM models on classification performance
 
-| LLM Model  | Accuracy | F1-Score |
-| ---------- | -------- | -------- |
-| gpt-5-mini | 95.0     | 95.1     |
-| gpt-4o     | 88.0     | 87.6     |
+| LLM Model         | Accuracy | F1-Score |
+| ----------------- | -------- | -------- |
+| gpt-5-mini        | 95.0     | 95.1     |
+| gpt-4o            | 88.0     | 87.6     |
+| llama3.3          | 89.0     | 88.3     |
+| gemma-27b-it 90.1 | 90.0     | 89.6     |
+| gpt-oss           | 92.7     | 92.3     |
 
 ---
