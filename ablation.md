@@ -38,25 +38,25 @@ This dataset contains 12 activities collected from 14 subjects using acceleromet
 <br>
 ### Temporal Partitioning Analysis
 
-We investigated the effect of different temporal partitioning strategies used during hybrid search. The motivation for this analysis is that activity patterns may not be uniformly distributed across the temporal dimension of a signal window. Transitions often occur at the beginning or end of a segment, while steady-state motion is captured in the middle portion. By explicitly modeling different temporal partitions, we aim to assess whether combining localized representations yields better retrieval performance compared to a single global embedding. This analysis was conducted on the MHEALTH dataset.
+We investigated the effect of different temporal partitioning strategies used during hybrid search. The motivation for this analysis is that activity patterns may not be uniformly distributed across the temporal dimension of a signal window. Transitions often occur at the beginning or end of a segment, while steady-state motion is captured in the middle portion. By explicitly modeling different temporal partitions, we aim to assess whether combining localized representations yields better retrieval performance compared to a single global segments. This analysis was conducted on the MHEALTH dataset.
 
 We considered the following partitioning configurations:
 
-- **Whole window only:** A single embedding computed over the entire temporal window.
-- **Start + End partitions:** Separate embeddings computed from the initial and final segments of the window.
-- **Start + Mid + End partitions:** Embeddings derived from three equal subdivisions, excluding the whole-window representation.
-- **Whole + Start + Mid + End partitions:** A hybrid configuration that combines the global representation with localized embeddings from all three partitions.
+- **Full segment only:** A single embedding computed over the entire temporal window.
+- **Start + End sub-segments:** Separate embeddings computed from the initial and final sub-segments of the window.
+- **Start + Mid + End sub-segments:** Embeddings derived from three equal sub-segments, excluding the whole-window representation.
+- **Full segment + Start + Mid + End sub-segments:** A hybrid configuration that combines the global representation with localized embeddings from all three sub-segments.
 
-The results are summarized in **Table 1**. The whole-window representation alone provides a strong baseline. Incorporating start and end partitions captures transitional dynamics, yielding modest gains. Adding mid-segment information further improves performance, particularly for activities with sustained motion. The best results are consistently obtained when both the global embedding and all local partitions are combined, demonstrating that global context and localized temporal cues are complementary.
+The results are summarized in **Table 1**. The full segment representation alone provides a strong baseline. Incorporating start and end sub-segments captures transitional dynamics, yielding modest gains. Adding mid-segment information further improves performance, particularly for activities with sustained motion. The best results are consistently obtained when both the global embedding and all local sub-segments are combined, demonstrating that global context and localized temporal cues are complementary.
 
 ##### Table 1. Impact of different temporal partitioning strategies on retrieval performance
 
 | Partitioning Strategy     | Accuracy | F1-score |
 | ------------------------- | -------- | -------- |
-| Whole window only         | 92.00    | 92.13    |
+| Full segment only         | 92.00    | 92.13    |
 | Start + End               | 91.00    | 91.86    |
 | Start + Mid + End         | 90.00    | 90.79    |
-| Whole + Start + Mid + End | 95.00    | 94.90    |
+| Full + Start + Mid + End | 95.00    | 94.90    |
 
 ---
 
@@ -77,16 +77,16 @@ When exploring the effect of one parameter, all others were fixed at these defau
 
 #### Hybrid Search Weights
 
-We studied the effect of different weighting strategies in the hybrid search mechanism, which combines whole, start, mid, and end embeddings. The results are presented in **Table 2**. We find that the scheme `[0.4, 0.2, 0.2, 0.2]` achieves the highest accuracy. By assigning greater weight to the whole-window embedding, this configuration allows the hybrid search to prioritize global activity patterns while still incorporating complementary fine-grained cues from localized partitions.
+We studied the effect of different weighting strategies in the hybrid search mechanism, which combines full-segment, start, mid, and end sub-segment embeddings. The results are presented in **Table 2**. We find that the scheme `[0.4, 0.2, 0.2, 0.2]` achieves the highest accuracy. By assigning greater weight to the full-segment embedding, this configuration allows the hybrid search to prioritize global activity patterns while still incorporating complementary fine-grained cues from localized partitions.
 
 ##### Table 2. Impact of hybrid search weighting on retrieval accuracy and F1-score
 
-| Weights [whole, start, mid, end] | Accuracy | F1-score |
-| -------------------------------- | -------- | -------- |
-| [0.25, 0.25, 0.25, 0.25]         | 93.00    | 93.90    |
-| [0.4, 0.2, 0.2, 0.2]             | 95.00    | 94.90    |
-| [0.1, 0.4, 0.1, 0.4]             | 92.50    | 92.40    |
-| [0.2, 0.2, 0.4, 0.2]             | 85.00    | 85.30    |
+| Weights [full-segment, start, mid, end] | Accuracy | F1-score |
+| --------------------------------------- | -------- | -------- |
+| [0.25, 0.25, 0.25, 0.25]                | 93.00    | 93.90    |
+| [0.4, 0.2, 0.2, 0.2]                    | 95.00    | 94.90    |
+| [0.1, 0.4, 0.1, 0.4]                    | 92.50    | 92.40    |
+| [0.2, 0.2, 0.4, 0.2]                    | 85.00    | 85.30    |
 
 ---
 
