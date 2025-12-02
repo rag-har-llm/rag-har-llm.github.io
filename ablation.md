@@ -143,13 +143,14 @@ We evaluated the impact of different large language models while keeping embeddi
 
 #### Prompt Optimization
 
-To further improve classification performance, we conducted prompt optimization experiments on selected models. By refining the prompt structure and instructions, we achieved notable performance gains. The results are presented in **Table 6**. After optimization, `gpt-5-mini` achieved 98.7% accuracy. Similarly, the lower-performing `gpt-oss-20b` improved from 81.0% to 97.0% accuracy, showing that prompt optimization can substantially enhance the performance of open-source models, making them more competitive with proprietary alternatives.
+To further improve classification performance, we conducted prompt optimization experiments on selected models. By refining the prompt structure and instructions, we achieved notable performance gains. The results are presented in **Table 6**. After optimization, `gpt-5-mini` achieved 98.7% accuracy. The lower-performing `gpt-oss-20b` improved substantially from 81.0% to 97.0% accuracy. We also observed a modest gain for `gemma-27b-it`, which increased from 90.0% to 94.0% accuracy after prompt tuning. These results show that prompt optimization can benefit both proprietary and open-source models.
 
 ##### Table 6. Impact of prompt optimization on classification performance
 
-| LLM Model   | Accuracy (Before) | Accuracy (After) | Improvement |
-| ----------- | ----------------- | ---------------- | ----------- |
-| gpt-5-mini  | 96.91             | 98.7             | +1.79       |
-| gpt-oss-20b | 81.0              | 97.0             | +16.0       |
+| LLM Model    | Accuracy (Before) | Accuracy (After) | Improvement |
+| ------------ | ----------------- | ---------------- | ----------- |
+| gpt-5-mini   | 96.91             | 98.7             | +1.79       |
+| gpt-oss-20b  | 81.0              | 91.0             | +10.0       |
+| gemma-27b-it | 90.0              | 94.0             | +4.0        |
 
 ---
