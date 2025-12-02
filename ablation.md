@@ -35,10 +35,12 @@ This dataset contains 12 activities collected from 14 subjects using acceleromet
 
 <br>
 ## Temporal and Hyperparameter Analysis of RAG-HAR
+
+This analysis was conducted on the MHEALTH dataset.
 <br>
 ### Temporal Partitioning Analysis
 
-We investigated the effect of different temporal partitioning strategies used during hybrid search. The motivation for this analysis is that activity patterns may not be uniformly distributed across the temporal dimension of a signal window. Transitions often occur at the beginning or end of a segment, while steady-state motion is captured in the middle portion. By explicitly modeling different temporal partitions, we aim to assess whether combining localized representations yields better retrieval performance compared to a single global segments. This analysis was conducted on the MHEALTH dataset.
+We investigated the effect of different temporal partitioning strategies used during hybrid search. The motivation for this analysis is that activity patterns may not be uniformly distributed across the temporal dimension of a signal window. Transitions often occur at the beginning or end of a segment, while steady-state motion is captured in the middle portion. By explicitly modeling different temporal partitions, we aim to assess whether combining localized representations yields better retrieval performance compared to a single global segments. 
 
 We considered the following partitioning configurations:
 
@@ -51,11 +53,11 @@ The results are summarized in **Table 1**. The full segment representation alone
 
 ##### Table 1. Impact of different temporal partitioning strategies on retrieval performance
 
-| Partitioning Strategy     | Accuracy | F1-score |
-| ------------------------- | -------- | -------- |
-| Full segment only         | 92.00    | 92.13    |
-| Start + End               | 91.00    | 91.86    |
-| Start + Mid + End         | 90.00    | 90.79    |
+| Partitioning Strategy    | Accuracy | F1-score |
+| ------------------------ | -------- | -------- |
+| Full segment only        | 92.00    | 92.13    |
+| Start + End              | 91.00    | 91.86    |
+| Start + Mid + End        | 90.00    | 90.79    |
 | Full + Start + Mid + End | 95.00    | 94.90    |
 
 ---
@@ -122,16 +124,29 @@ We then varied the number of retrieved-context exemplars provided in the prompt.
 
 #### Classifier Model
 
-Finally, we evaluated the impact of different large language models while keeping embeddings and search configurations fixed. The results are presented in **Table 5**. Among all models, `gpt-5-mini` achieved the best performance (95.0% accuracy, 95.1% F1), confirming the advantage of reasoning-oriented models in structured classification tasks. The open-source `gpt-oss` also delivered competitive results (92.7% accuracy, 92.3% F1), outperforming larger instruction-tuned models such as `gemma-27b-it` and `llama3.3`. In contrast, the general-purpose `gpt-4o` lagged behind (88.0% accuracy, 87.6% F1), suggesting that general reasoning strength does not directly translate to higher accuracy in retrieval-augmented classification.
+We evaluated the impact of different large language models while keeping embeddings and search configurations fixed. The results are presented in **Table 5**. The reasoning-oriented `gpt-5-mini` achieved the best performance (96.91% accuracy, 96.7% F1), confirming the advantage of specialized reasoning models in structured classification tasks. The open-source `gpt-oss-20b` delivered moderate results (81.0% accuracy, 82.9% F1), while the larger instruction-tuned models `gemma-27b-it` (90.0% accuracy, 89.6% F1) and `llama3.3` (89.0% accuracy, 88.3% F1) achieved higher accuracy. The general-purpose `gpt-4o` achieved 88.0% accuracy and 87.6% F1.
 
 ##### Table 5. Impact of different LLM models on classification performance
 
-| LLM Model         | Accuracy | F1-Score |
-| ----------------- | -------- | -------- |
-| gpt-5-mini        | 95.0     | 95.1     |
-| gpt-4o            | 88.0     | 87.6     |
-| llama3.3          | 89.0     | 88.3     |
-| gemma-27b-it 90.1 | 90.0     | 89.6     |
-| gpt-oss           | 92.7     | 92.3     |
+| LLM Model    | Accuracy | F1-Score |
+| ------------ | -------- | -------- |
+| gpt-5-mini   | 96.91    | 96.7     |
+| gpt-4o       | 88.0     | 87.6     |
+| llama3.3     | 89.0     | 88.3     |
+| gemma-27b-it | 90.0     | 89.6     |
+| gpt-oss-20b  | 81.0     | 82.9     |
+
+---
+
+#### Prompt Optimization
+
+To further improve classification performance, we conducted prompt optimization experiments on selected models. By refining the prompt structure and instructions, we achieved notable performance gains. The results are presented in **Table 6**. After optimization, `gpt-5-mini` achieved 98.7% accuracy. Similarly, the lower-performing `gpt-oss-20b` improved from 81.0% to 91.0% accuracy, showing that prompt optimization can substantially enhance the performance of open-source models, making them more competitive with proprietary alternatives.
+
+##### Table 6. Impact of prompt optimization on classification performance
+
+| LLM Model   | Accuracy (Before) | Accuracy (After) | Improvement |
+| ----------- | ----------------- | ---------------- | ----------- |
+| gpt-5-mini  | 96.91             | 98.7             | +1.79       |
+| gpt-oss-20b | 81.0              | 91.0             | +10.0       |
 
 ---
