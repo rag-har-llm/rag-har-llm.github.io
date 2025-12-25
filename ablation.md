@@ -150,7 +150,7 @@ To further improve classification performance, we conducted prompt optimization 
 | LLM Model    | Accuracy (Before) | Accuracy (After) | Improvement |
 | ------------ | ----------------- | ---------------- | ----------- |
 | gpt-5-mini   | 96.91             | 98.7             | +1.79       |
-| gpt-oss-20b  | 81.0              | 91.0             | +10.0       |
+| gpt-oss-20b  | 81.0              | 97.0             | +16.0       |
 | gemma-27b-it | 90.0              | 94.0             | +4.0        |
 
 ---
