@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Meta tags for social media banners -->
+    <meta
+      name="description"
+      content="RAG-HAR: A training-free retrieval-augmented framework that leverages large language models for Human Activity Recognition"
+    />
+    <meta
+      property="og:title"
+      content="RAG-HAR: Retrieval Augmented Generation-based Human Activity Recognition"
+    />
+    <meta
+      property="og:description"
+      content="A training-free retrieval-augmented framework that leverages large language models for Human Activity Recognition"
+    />
+    <meta property="og:url" content="https://rag-har-llm.github.io" />
+    <meta property="og:image" content="static/images/Basic-HAR.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta
+      name="twitter:title"
+      content="RAG-HAR: Retrieval Augmented Generation-based Human Activity Recognition"
+    />
+    <meta
+      name="twitter:description"
+      content="A training-free retrieval-augmented framework that leverages large language models for Human Activity Recognition"
+    />
+    <meta name="twitter:image" content="static/images/Basic-HAR.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="keywords"
+      content="Human Activity Recognition, HAR, Retrieval Augmented Generation, RAG, Large Language Models, LLM, Sensor Data"
+    />
+
+    <title>
+      RAG-HAR: Retrieval Augmented Generation-based Human Activity Recognition
+    </title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="static/css/bulma.min.css" />
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="static/css/index.css" />
+
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                RAG-HAR: Retrieval Augmented Generation-based Human Activity
+                Recognition
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <!-- Paper authors -->
+                <span class="author-block">
+                  <a
+                    href="https://scholar.google.com/citations?user=6e2EoOMAAAAJ&hl=en"
+                    target="_blank"
+                    >Nirhoshan Sivaroopan</a
+                  ><sup>*1</sup>,</span
+                >
+                <span class="author-block">
+                  <a href="https://github.com/hanzjk" target="_blank"
+                    >Hansi Karunarathna</a
+                  ><sup>*2</sup>,</span
+                >
+                <span class="author-block">
+                  <a
+                    href="https://scholar.google.com/citations?user=DayFwIcAAAAJ&hl=en"
+                    target="_blank"
+                    >Chamara Madarasingha</a
+                  ><sup>3</sup>,</span
+                >
+                <span class="author-block">
+                  <a
+                    href="https://scholar.google.com/citations?user=jDm73CQAAAAJ&hl=en"
+                    target="_blank"
+                    >Anura Jayasumana</a
+                  ><sup>4</sup>,</span
+                >
+                <span class="author-block">
+                  <a
+                    href="https://scholar.google.com/citations?user=V-YM7ecAAAAJ&hl=en"
+                    target="_blank"
+                    >Kanchana Thilakarathna</a
+                  ><sup>1</sup>
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"
+                  ><sup>1</sup>University of Sydney,</span
+                >
+                <span class="author-block"
+                  ><sup>2</sup>University of Sri Jayewardenepura,</span
+                >
+                <span class="author-block"><sup>3</sup>Curtin University,</span>
+                <span class="author-block"
+                  ><sup>4</sup>Colorado State University</span
+                >
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="eql-cntrb"
+                  ><small><sup>*</sup>Equal Contribution</small></span
+                >
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PerCom Paper link -->
+                  <span class="link-block">
+                    <a
+                      href="https://percom.org/accepted-papers-main-conference/"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper (Coming Soon)</span>
+                    </a>
+                  </span>
+
+                  <!-- Supplementary link -->
+                  <span class="link-block">
+                    <a
+                      href="ablation"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fas fa-file-alt"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a
+                      href="https://github.com/hanzjk/rag-har"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                  <!-- ArXiv abstract Link -->
+                  <span class="link-block">
+                    <a
+                      href="https://arxiv.org/abs/2512.08984"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaser Image-->
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img
+            src="static/images/Basic-HAR.jpg"
+            alt="RAG-HAR Framework Overview"
+          />
+          <h2 class="subtitle has-text-centered">
+            RAG-HAR framework: A training-free approach that leverages
+            retrieval-augmented generation with large language models for human
+            activity recognition from sensor data.
+          </h2>
+        </div>
+      </div>
+    </section>
+    <!-- End teaser Image -->
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Human Activity Recognition (HAR) underpins applications in
+                healthcare, rehabilitation, fitness tracking, and smart
+                environments, yet existing deep learning approaches demand
+                dataset-specific training, large labeled corpora, and
+                significant computational resources. We introduce
+                <strong>RAG-HAR</strong>, a training-free retrieval-augmented
+                framework that leverages large language models (LLMs) for HAR.
+                RAG-HAR computes lightweight statistical descriptors, retrieves
+                semantically similar samples from a vector database, and uses
+                this contextual evidence to make LLM-based activity
+                identification. We further enhance RAG-HAR by first applying
+                prompt optimization and incorporating domain knowledge to
+                effectively guide LLMs, and second, by introducing an LLM-based
+                activity descriptor that generates context-enriched vector
+                databases for delivering accurate and highly relevant contextual
+                information. Along with these mechanisms, RAG-HAR achieves
+                state-of-the-art performance across six diverse HAR benchmarks.
+                Most importantly, RAG-HAR attains these improvements without
+                requiring model training or fine-tuning, emphasizing its
+                robustness and practical applicability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End paper abstract -->
+
+    <!-- RAG-HAR Framework -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">RAG-HAR Framework</h2>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="content has-text-justified">
+              <p>
+                RAG-HAR introduces a two-stage framework for training-free human
+                activity recognition: the
+                <strong>Baseline Stage</strong> establishes retrieval-augmented
+                classification, while the
+                <strong>Optimization Stage</strong> enhances performance through
+                prompt optimization and LLM-based activity descriptors.
+              </p>
+
+              <h4 class="title is-5" style="margin-top: 1.5rem">
+                Stage 1: Baseline RAG-HAR
+              </h4>
+              <ol>
+                <li>
+                  <strong>Temporal Partitioning:</strong> Each sensor window is
+                  divided into four temporal segments—<em
+                    >Full, Start, Mid, and End</em
+                  >—to capture both global patterns and localized temporal
+                  dynamics such as activity transitions.
+                </li>
+                <li>
+                  <strong>Statistical Descriptor Extraction:</strong> Raw sensor
+                  signals are transformed into eight statistical descriptors per
+                  channel across each partition:
+                  <em
+                    >mean, max, min, first quartile (Q1), third quartile (Q3),
+                    standard deviation, median, and number of peaks</em
+                  >. These lightweight features capture essential motion
+                  characteristics while remaining interpretable.
+                </li>
+                <li>
+                  <strong>Text Encoding & Embedding:</strong> Statistical
+                  descriptors are formatted into structured natural language
+                  templates and encoded using a text embedding model, generating
+                  dense vector representations for semantic similarity search.
+                </li>
+                <li>
+                  <strong>Multi-Vector Hybrid Search:</strong> RAG-HAR retrieves
+                  similar samples from a vector database using weighted
+                  re-ranking across all temporal partitions, combining global
+                  context with fine-grained temporal cues.
+                </li>
+                <li>
+                  <strong>LLM-based Classification:</strong> Retrieved exemplars
+                  are provided as in-context examples to an LLM, which leverages
+                  semantic reasoning to classify the query activity based on
+                  pattern matching with retrieved evidence.
+                </li>
+              </ol>
+
+              <h4 class="title is-5" style="margin-top: 1.5rem">
+                Stage 2: Optimization
+              </h4>
+              <p>The Optimization Stage introduces two key enhancements:</p>
+              <ul>
+                <li>
+                  <strong>Prompt Optimization:</strong> An evolutionary
+                  algorithm with roulette-wheel selection iteratively refines
+                  prompts using three strategies—Exploration (generate diverse
+                  variants), Combination (merge successful prompts), and
+                  Refinement (targeted improvements)—to maximize classification
+                  accuracy.
+                </li>
+                <li>
+                  <strong>LLM-based Activity Descriptors:</strong> Rather than
+                  using simple programmatic templates that capture only shallow
+                  statistical features, we leverage an LLM to generate detailed
+                  natural language descriptors. The LLM receives raw time-series
+                  data alongside sensor configuration details (sampling rate,
+                  sensor placement, orientation, and axis mappings) and produces
+                  structured analyses covering dominant axis, motion smoothness,
+                  intensity, and transitions. These rich descriptors are then
+                  vectorized and indexed, providing semantically meaningful
+                  representations that significantly enhance retrieval
+                  relevance.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End RAG-HAR Framework -->
+
+    <!-- Demo Paper -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Demo Paper</h2>
+            <p class="subtitle">
+              Large Language Models Meet Wearable Sensing: A Demo of
+              Training-Free HAR with RAG-HAR
+            </p>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="content has-text-centered">
+              <p>
+                A mobile application demonstrating RAG-HAR with real-time
+                activity recognition from smartphone sensor data.
+              </p>
+            </div>
+            <div class="has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a
+                    href="#"
+                    class="external-link button is-normal is-rounded is-dark"
+                  >
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Demo Paper (Coming Soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a
+                    href="https://github.com/hanzjk/rag-har-app"
+                    target="_blank"
+                    class="external-link button is-normal is-rounded is-dark"
+                  >
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Demo Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Demo Paper -->
+
+    <!-- Results -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Results</h2>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="content has-text-justified">
+              <p>
+                We evaluate RAG-HAR on six diverse HAR benchmark datasets
+                spanning locomotion activities, daily living tasks, exercises,
+                and assembly-line operations. RAG-HAR achieves state-of-the-art
+                performance across multiple benchmarks
+                <em>without any model training</em>, outperforming supervised
+                deep learning methods that require extensive labeled data and
+                compute resources.
+              </p>
+            </div>
+            <div class="content">
+              <h4 class="title is-5">
+                Performance Comparison on HAR Benchmarks (Accuracy % / F1-score
+                %)
+              </h4>
+              <div class="table-container">
+                <table
+                  class="table is-bordered is-striped is-hoverable is-fullwidth"
+                >
+                  <thead>
+                    <tr>
+                      <th>Dataset</th>
+                      <th>RAG-HAR Acc</th>
+                      <th>RAG-HAR F1</th>
+                      <th>Best Baseline Acc</th>
+                      <th>Best Baseline F1</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>PAMAP2</td>
+                      <td><strong>91.60</strong></td>
+                      <td><strong>91.12</strong></td>
+                      <td>85.69</td>
+                      <td>90.40</td>
+                    </tr>
+                    <tr>
+                      <td>MHEALTH</td>
+                      <td><strong>96.91</strong></td>
+                      <td><strong>96.74</strong></td>
+                      <td>96.72</td>
+                      <td>96.47</td>
+                    </tr>
+                    <tr>
+                      <td>GOTOV</td>
+                      <td><strong>81.55</strong></td>
+                      <td><strong>79.92</strong></td>
+                      <td>-</td>
+                      <td>79.40</td>
+                    </tr>
+                    <tr>
+                      <td>SKODA</td>
+                      <td><strong>96.04</strong></td>
+                      <td><strong>95.21</strong></td>
+                      <td>-</td>
+                      <td>94.80</td>
+                    </tr>
+                    <tr>
+                      <td>USC-HAD</td>
+                      <td><strong>57.20</strong></td>
+                      <td>58.63</td>
+                      <td>-</td>
+                      <td><strong>62.80</strong></td>
+                    </tr>
+                    <tr>
+                      <td>HHAR</td>
+                      <td><strong>58.61</strong></td>
+                      <td><strong>59.86</strong></td>
+                      <td>-</td>
+                      <td>59.25</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p
+                class="has-text-centered is-size-7"
+                style="color: #666; margin-top: 0.5rem"
+              >
+                "-" indicates metric not reported. Bold indicates best
+                performance.
+              </p>
+            </div>
+            <div class="content has-text-justified" style="margin-top: 1.5rem">
+              <p>
+                <strong>Key Findings:</strong> RAG-HAR achieves state-of-the-art
+                performance on most datasets <em>without any training</em>. It
+                excels on datasets with diverse activity types and complex
+                motion patterns, where semantic reasoning provides significant
+                advantages. Notably, RAG-HAR adapts instantly to new datasets by
+                simply updating the vector database.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Results -->
+
+    <!-- Prompt Optimization -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Prompt Optimization</h2>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="content has-text-justified">
+              <p>
+                LLM performance is highly sensitive to prompt design. We
+                introduce an iterative <strong>prompt optimizer</strong> that
+                automatically discovers effective instructions through
+                roulette-wheel selection and three strategies:
+                <em>Exploration</em> (diverse generation),
+                <em>Combination</em> (crossover of best prompts), and
+                <em>Refinement</em> (fine-tuning). The LLM classifier remains
+                fixed with no weight updates.
+              </p>
+            </div>
+            <div class="content has-text-centered">
+              <img
+                src="static/images/prompt-optimization.png"
+                alt="Prompt Optimization Framework"
+                style="max-width: 100%; border-radius: 8px"
+              />
+              <p class="is-size-7" style="color: #666; margin-top: 0.5rem">
+                Overview of the prompt optimization framework showing descriptor
+                generation, candidate instruction creation, and iterative
+                refinement.
+              </p>
+            </div>
+            <div class="content">
+              <h4 class="title is-5">
+                Impact of Prompt Optimization (MHEALTH Dataset)
+              </h4>
+              <div class="table-container">
+                <table
+                  class="table is-bordered is-striped is-hoverable is-fullwidth"
+                >
+                  <thead>
+                    <tr>
+                      <th>LLM Model</th>
+                      <th>Before Optimization</th>
+                      <th>After Optimization</th>
+                      <th>Improvement</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>GPT-4o-mini</td>
+                      <td>96.91%</td>
+                      <td><strong>98.7%</strong></td>
+                      <td>+1.79%</td>
+                    </tr>
+                    <tr>
+                      <td>Gemma-27B-IT</td>
+                      <td>90.0%</td>
+                      <td><strong>94.0%</strong></td>
+                      <td>+4.0%</td>
+                    </tr>
+                    <tr>
+                      <td>Qwen2.5-20B</td>
+                      <td>81.0%</td>
+                      <td><strong>91.0%</strong></td>
+                      <td>+10.0%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="has-text-centered is-size-7" style="color: #666">
+                Prompt optimization yields significant gains across model sizes.
+                Lower-performing models show larger relative improvements,
+                narrowing the gap with proprietary models.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Prompt Optimization -->
+
+    <!-- Open-set Classification -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Open-set Classification</h2>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="content has-text-justified">
+              <p>
+                Real-world HAR systems frequently encounter activities not
+                present in the knowledge base. Traditional deep learning
+                classifiers extend the label space in a binary way, sending all
+                out-of-distribution inputs to a single "unknown"
+                class—collapsing diverse forms of novelty into one
+                undifferentiated bucket. RAG-HAR addresses this through
+                <strong>open-set classification</strong>, leveraging LLM
+                reasoning to detect, reject, and even
+                <em>generate meaningful labels</em> for previously unseen
+                activities.
+              </p>
+
+              <h4 class="title is-5" style="margin-top: 1.5rem">
+                Open-Set Detection
+              </h4>
+              <p>
+                We evaluate open-set classification on the PAMAP2 dataset under
+                three openness conditions (30%, 50%, and 70% of activities held
+                out as unknown). RAG-HAR consistently outperforms baseline
+                methods, demonstrating strong performance in both lower and
+                higher openness settings.
+              </p>
+
+              <h4 class="title is-5" style="margin-top: 1.5rem">
+                Impact of Label Availability
+              </h4>
+              <p>
+                Using a leave-one-class-out protocol, we investigate how label
+                availability affects unseen activity recognition. When the true
+                label is available in the prompt (as a semantic anchor),
+                accuracy reaches <strong>78.0%</strong>. When replaced with a
+                generic "unseen activity" placeholder, accuracy drops to
+                <strong>63.2%</strong>—a ~15% decline. This reveals that LLMs
+                can leverage semantic knowledge embedded in labels to improve
+                unknown activity detection.
+              </p>
+
+              <h4 class="title is-5" style="margin-top: 1.5rem">
+                Labeling Unseen Activities
+              </h4>
+              <p>
+                Beyond detection, RAG-HAR can
+                <strong>generate meaningful labels</strong>
+                for novel activities—a capability unique to LLM-based
+                approaches. The LLM generates a label, which is then mapped to
+                the closest ground-truth class via cosine similarity.
+              </p>
+            </div>
+
+            <!-- Open-set Images Side by Side -->
+            <div class="columns is-centered" style="margin-top: 1.5rem;">
+              <div class="column is-half">
+                <figure class="image">
+                  <img src="static/images/sementic_proximity_openset.png" alt="Semantic Proximity of LLM-predicted Labels" style="border-radius: 8px;">
+                  <figcaption class="has-text-centered is-size-7" style="color: #666; margin-top: 0.5rem;">
+                    Semantic proximity of LLM-predicted labels to ground-truth activity classes.
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column is-half">
+                <figure class="image">
+                  <img src="static/images/unknown_activity_labeling_accuracy.png" alt="Unknown Activity Labeling Accuracy" style="border-radius: 8px;">
+                  <figcaption class="has-text-centered is-size-7" style="color: #666; margin-top: 0.5rem;">
+                    Labeling accuracy for unknown activities across different settings.
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="content has-text-justified" style="margin-top: 1rem;">
+              <p>
+                Unlike conventional DL models that collapse all unknowns into a
+                single undifferentiated class, RAG-HAR leverages pretrained
+                semantic knowledge to assign fine-grained, human-interpretable
+                labels—effectively partitioning the unknown space into
+                meaningful subcategories. This capability is critical for
+                deploying HAR in healthcare monitoring, elderly care, and
+                safety-critical applications where encountering new activities
+                is inevitable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Open-set Classification -->
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <div style="position: relative">
+          <button
+            onclick="copyBibtex()"
+            style="
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              padding: 5px 10px;
+              cursor: pointer;
+              background: #363636;
+              color: white;
+              border: none;
+              border-radius: 4px;
+              font-size: 0.8rem;
+            "
+          >
+            Copy
+          </button>
+          <pre><code id="bibtex-code">@inproceedings{sivaroopan2026raghar,
+  title={RAG-HAR: Retrieval Augmented Generation-based Human Activity Recognition},
+  author={Sivaroopan, Nirhoshan and Karunarathna, Hansi and Madarasingha, Chamara and Jayasumana, Anura and Thilakarathna, Kanchana},
+  booktitle={IEEE International Conference on Pervasive Computing and Communications (PerCom)},
+  year={2026}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+    <!--End BibTex citation -->
+
+    <script>
+      function copyBibtex() {
+        const bibtex = document.getElementById("bibtex-code").innerText;
+        navigator.clipboard.writeText(bibtex).then(function () {
+          const btn = event.target;
+          btn.innerText = "Copied!";
+          setTimeout(() => (btn.innerText = "Copy"), 2000);
+        });
+      }
+    </script>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page was built using the
+                <a
+                  href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank"
+                  >Academic Project Page Template</a
+                >
+                which was adopted from the
+                <a href="https://nerfies.github.io" target="_blank">Nerfies</a>
+                project page. You are free to borrow the source code of this
+                website, we just ask that you link back to this page in the
+                footer. <br />
+                This website is licensed under a
+                <a
+                  rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/"
+                  target="_blank"
+                  >Creative Commons Attribution-ShareAlike 4.0 International
+                  License</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
